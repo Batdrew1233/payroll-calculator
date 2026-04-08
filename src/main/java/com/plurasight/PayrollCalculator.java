@@ -6,7 +6,7 @@ public class PayrollCalculator {
     public static void main(String[] args) {
         //Ask user for name
         Scanner myScanner = new Scanner(System.in);
-        System.out.println("What is your name?: ");
+        System.out.print("What is your name?: ");
         String name = myScanner.nextLine();
 
         //Ask user their hours worked
@@ -19,6 +19,11 @@ public class PayrollCalculator {
         double payRate = myScanner.nextDouble();
 
         //Calculate the users gross pay
+        double annualGrossPay = (hourWorked * payRate) * 52;
+
+        //Print out name, and gross pay annually
+        String roundedAnnualGrossPay = String.format("%.2f",annualGrossPay);
+        System.out.println("Hey " + name + ", our gross pay annually is $" + roundedAnnualGrossPay + ".");
 
 
     }
