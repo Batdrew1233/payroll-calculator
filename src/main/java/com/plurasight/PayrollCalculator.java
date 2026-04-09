@@ -14,16 +14,32 @@ public class PayrollCalculator {
         double hourWorked = myScanner.nextDouble();
 
         //Ask user for pay rate
-
         System.out.print("How much do you get paid: ");
         double payRate = myScanner.nextDouble();
 
         //Calculate the users gross pay
-        double annualGrossPay = (hourWorked * payRate) * 52;
+        double annualGrossPay;
+        if (hourWorked > 40)
+        {
+            double overTimeHours = hourWorked - 40;
+            double overTimePay = overTimeHours * payRate * 1.5;
+            double regularPay = (40 * payRate);
+
+            annualGrossPay = (regularPay + overTimePay) * 52;
+        }
+        else{
+            annualGrossPay = (hourWorked * payRate) * 52;
+        }
+
+
 
         //Print out name, and gross pay annually
         String roundedAnnualGrossPay = String.format("%.2f",annualGrossPay);
         System.out.println("Hey " + name + ", our gross pay annually is $" + roundedAnnualGrossPay + ".");
+
+
+        myScanner.close();
+
 
 
     }
